@@ -1,0 +1,786 @@
+# --- Telemetry & GDID Blocker v1.0: hosts list ---
+# Append to C:\Windows\System32\drivers\etc\hosts (edit as Administrator), then run:
+#   ipconfig /flushdns
+# Microsoft Defender may flag these entries as SettingsModifier:Win32/HostsFileHijack and
+# revert the file. To keep them: Windows Security > Virus & threat protection >
+# Protection history > select the detection > Actions > Allow on device.
+#
+# Every name was checked by DNS on 2026-09-25. Purposes were cross-checked against Hagezi
+# native.winoffice and WindowsSpyBlocker captures, with Microsoft's own endpoint docs used
+# only as a starting point.
+#
+# Hosts files cannot wildcard. This covers every name found as of the date above, including
+# a sweep of regional prefixes; servers Microsoft adds later are NOT covered until listed.
+#
+# login.live.com and account.live.com are included but commented out (see OPTIONAL: GDID
+# creation). With them left open, Windows will still create a GDID; this list cuts the known
+# paths that register and report it, plus Microsoft telemetry. It does not remove an
+# existing GDID.
+#
+# OPTIONAL sections are commented out; remove the leading '# ' from a line to enable it.
+# [Tier] tags name the TelemetryGDIDBlocker.ps1 tiers that apply each section ([Standard] =
+# every tier). The script applies this list plus services, tasks, policies and firewall rules.
+
+# === [Gaming, Maximum, Stripped; not with -KeepPhoneLink] GDID device graph / announce ===
+# Where Windows registers its GDID in Microsoft's device graph (DDS, CDP/Project Rome)
+# and syncs Activity History. Breaks Phone Link / cross-device features.
+0.0.0.0 dds.microsoft.com
+:: dds.microsoft.com
+0.0.0.0 fd.dds.microsoft.com
+:: fd.dds.microsoft.com
+0.0.0.0 cdpcs.access.microsoft.com
+:: cdpcs.access.microsoft.com
+0.0.0.0 aad.cs.dds.microsoft.com
+:: aad.cs.dds.microsoft.com
+0.0.0.0 activity.windows.com
+:: activity.windows.com
+0.0.0.0 assets.activity.windows.com
+:: assets.activity.windows.com
+0.0.0.0 continuum.dds.microsoft.com
+:: continuum.dds.microsoft.com
+0.0.0.0 cs.dds.microsoft.com
+:: cs.dds.microsoft.com
+0.0.0.0 edge.activity.windows.com
+:: edge.activity.windows.com
+0.0.0.0 romeccs.microsoft.com
+:: romeccs.microsoft.com
+0.0.0.0 test.activity.windows.com
+:: test.activity.windows.com
+0.0.0.0 ztd.dds.microsoft.com
+:: ztd.dds.microsoft.com
+
+# === [Standard] Windows diagnostic data and error reporting ===
+# DiagTrack / 1DS event collectors, legacy Vortex, Watson / OCA crash reporting,
+# telecommand. Also carries Edge, Office, Teams and VS Code events.
+0.0.0.0 choice.microsoft.com
+:: choice.microsoft.com
+0.0.0.0 redir.metaservices.microsoft.com
+:: redir.metaservices.microsoft.com
+0.0.0.0 browser.events.data.microsoft.com
+:: browser.events.data.microsoft.com
+0.0.0.0 browser.events.data.msn.com
+:: browser.events.data.msn.com
+0.0.0.0 ceuswatcab01.blob.core.windows.net
+:: ceuswatcab01.blob.core.windows.net
+0.0.0.0 ceuswatcab02.blob.core.windows.net
+:: ceuswatcab02.blob.core.windows.net
+0.0.0.0 df.telemetry.microsoft.com
+:: df.telemetry.microsoft.com
+0.0.0.0 diagnostics.support.microsoft.com
+:: diagnostics.support.microsoft.com
+0.0.0.0 eaus2watcab01.blob.core.windows.net
+:: eaus2watcab01.blob.core.windows.net
+0.0.0.0 eaus2watcab02.blob.core.windows.net
+:: eaus2watcab02.blob.core.windows.net
+0.0.0.0 eu-v10.events.data.microsoft.com
+:: eu-v10.events.data.microsoft.com
+0.0.0.0 eu-v10c.events.data.microsoft.com
+:: eu-v10c.events.data.microsoft.com
+0.0.0.0 eu-v20.events.data.microsoft.com
+:: eu-v20.events.data.microsoft.com
+0.0.0.0 eu-watsonc.events.data.microsoft.com
+:: eu-watsonc.events.data.microsoft.com
+0.0.0.0 events-sandbox.data.microsoft.com
+:: events-sandbox.data.microsoft.com
+0.0.0.0 events.data.microsoft.com
+:: events.data.microsoft.com
+0.0.0.0 functional.events.data.microsoft.com
+:: functional.events.data.microsoft.com
+0.0.0.0 kmwatson.events.data.microsoft.com
+:: kmwatson.events.data.microsoft.com
+0.0.0.0 kmwatsonc.events.data.microsoft.com
+:: kmwatsonc.events.data.microsoft.com
+0.0.0.0 nw-umwatson.events.data.microsoft.com
+:: nw-umwatson.events.data.microsoft.com
+0.0.0.0 oca.microsoft.com
+:: oca.microsoft.com
+0.0.0.0 oca.telemetry.microsoft.com
+:: oca.telemetry.microsoft.com
+0.0.0.0 reports.wes.df.telemetry.microsoft.com
+:: reports.wes.df.telemetry.microsoft.com
+0.0.0.0 self.events.data.microsoft.com
+:: self.events.data.microsoft.com
+0.0.0.0 services.wes.df.telemetry.microsoft.com
+:: services.wes.df.telemetry.microsoft.com
+0.0.0.0 sqm.df.telemetry.microsoft.com
+:: sqm.df.telemetry.microsoft.com
+0.0.0.0 sqm.telemetry.microsoft.com
+:: sqm.telemetry.microsoft.com
+0.0.0.0 survey.watson.microsoft.com
+:: survey.watson.microsoft.com
+0.0.0.0 teams.events.data.microsoft.com
+:: teams.events.data.microsoft.com
+0.0.0.0 telecommand.telemetry.microsoft.com
+:: telecommand.telemetry.microsoft.com
+0.0.0.0 telecommandsvc.microsoft.com
+:: telecommandsvc.microsoft.com
+0.0.0.0 telem-edge.smartscreen.microsoft.com
+:: telem-edge.smartscreen.microsoft.com
+0.0.0.0 telemetry.microsoft.com
+:: telemetry.microsoft.com
+0.0.0.0 telemetry.urs.microsoft.com
+:: telemetry.urs.microsoft.com
+0.0.0.0 umwatson.events.data.microsoft.com
+:: umwatson.events.data.microsoft.com
+0.0.0.0 umwatsonc.events.data.microsoft.com
+:: umwatsonc.events.data.microsoft.com
+0.0.0.0 us-v10.events.data.microsoft.com
+:: us-v10.events.data.microsoft.com
+0.0.0.0 us-v10c.events.data.microsoft.com
+:: us-v10c.events.data.microsoft.com
+0.0.0.0 us-v20.events.data.microsoft.com
+:: us-v20.events.data.microsoft.com
+0.0.0.0 v10.events.data.microsoft.com
+:: v10.events.data.microsoft.com
+0.0.0.0 v10.vortex-win.data.microsoft.com
+:: v10.vortex-win.data.microsoft.com
+0.0.0.0 v10c.events.data.microsoft.com
+:: v10c.events.data.microsoft.com
+0.0.0.0 v20.events.data.microsoft.com
+:: v20.events.data.microsoft.com
+0.0.0.0 v20.vortex-win.data.microsoft.com
+:: v20.vortex-win.data.microsoft.com
+0.0.0.0 vortex-sandbox.data.microsoft.com
+:: vortex-sandbox.data.microsoft.com
+0.0.0.0 vortex-win-sandbox.data.microsoft.com
+:: vortex-win-sandbox.data.microsoft.com
+0.0.0.0 vortex-win.data.microsoft.com
+:: vortex-win.data.microsoft.com
+0.0.0.0 vortex.data.microsoft.com
+:: vortex.data.microsoft.com
+0.0.0.0 watson.events.data.microsoft.com
+:: watson.events.data.microsoft.com
+0.0.0.0 watson.live.com
+:: watson.live.com
+0.0.0.0 watson.microsoft.com
+:: watson.microsoft.com
+0.0.0.0 watson.ppe.telemetry.microsoft.com
+:: watson.ppe.telemetry.microsoft.com
+0.0.0.0 watson.telemetry.microsoft.com
+:: watson.telemetry.microsoft.com
+0.0.0.0 watsonc.events.data.microsoft.com
+:: watsonc.events.data.microsoft.com
+0.0.0.0 au-v10.events.data.microsoft.com
+:: au-v10.events.data.microsoft.com
+0.0.0.0 au-v10c.events.data.microsoft.com
+:: au-v10c.events.data.microsoft.com
+0.0.0.0 au-v20.events.data.microsoft.com
+:: au-v20.events.data.microsoft.com
+0.0.0.0 ch-v10.events.data.microsoft.com
+:: ch-v10.events.data.microsoft.com
+0.0.0.0 ch-v20.events.data.microsoft.com
+:: ch-v20.events.data.microsoft.com
+0.0.0.0 eu-office.events.data.microsoft.com
+:: eu-office.events.data.microsoft.com
+0.0.0.0 eu-teams.events.data.microsoft.com
+:: eu-teams.events.data.microsoft.com
+0.0.0.0 in-v10.events.data.microsoft.com
+:: in-v10.events.data.microsoft.com
+0.0.0.0 in-v10c.events.data.microsoft.com
+:: in-v10c.events.data.microsoft.com
+0.0.0.0 in-v20.events.data.microsoft.com
+:: in-v20.events.data.microsoft.com
+0.0.0.0 jp-v10.events.data.microsoft.com
+:: jp-v10.events.data.microsoft.com
+0.0.0.0 jp-v10c.events.data.microsoft.com
+:: jp-v10c.events.data.microsoft.com
+0.0.0.0 jp-v20.events.data.microsoft.com
+:: jp-v20.events.data.microsoft.com
+0.0.0.0 nw-kmwatson.events.data.microsoft.com
+:: nw-kmwatson.events.data.microsoft.com
+0.0.0.0 office.events.data.microsoft.com
+:: office.events.data.microsoft.com
+0.0.0.0 uk-v20.events.data.microsoft.com
+:: uk-v20.events.data.microsoft.com
+0.0.0.0 us-teams.events.data.microsoft.com
+:: us-teams.events.data.microsoft.com
+0.0.0.0 us-umwatsonc.events.data.microsoft.com
+:: us-umwatsonc.events.data.microsoft.com
+0.0.0.0 v20c.events.data.microsoft.com
+:: v20c.events.data.microsoft.com
+0.0.0.0 wes.df.telemetry.microsoft.com
+:: wes.df.telemetry.microsoft.com
+0.0.0.0 weus2watcab01.blob.core.windows.net
+:: weus2watcab01.blob.core.windows.net
+0.0.0.0 weus2watcab02.blob.core.windows.net
+:: weus2watcab02.blob.core.windows.net
+0.0.0.0 www.telecommandsvc.microsoft.com
+:: www.telecommandsvc.microsoft.com
+
+# === [Standard; not Gaming] Game / app event collectors (mobile.events) ===
+# Comment these out if you play Xbox / Game Pass titles: Forza Horizon 6 fails with
+# E:0-17 when mobile.events.data.microsoft.com is blocked.
+0.0.0.0 mobile.events.data.microsoft.com
+:: mobile.events.data.microsoft.com
+0.0.0.0 au-mobile.events.data.microsoft.com
+:: au-mobile.events.data.microsoft.com
+0.0.0.0 ch-mobile.events.data.microsoft.com
+:: ch-mobile.events.data.microsoft.com
+0.0.0.0 eu-mobile.events.data.microsoft.com
+:: eu-mobile.events.data.microsoft.com
+0.0.0.0 in-mobile.events.data.microsoft.com
+:: in-mobile.events.data.microsoft.com
+0.0.0.0 jp-mobile.events.data.microsoft.com
+:: jp-mobile.events.data.microsoft.com
+0.0.0.0 uk-mobile.events.data.microsoft.com
+:: uk-mobile.events.data.microsoft.com
+0.0.0.0 us-mobile.events.data.microsoft.com
+:: us-mobile.events.data.microsoft.com
+
+# === [Standard] Microsoft network connectivity check (NCSI) ===
+# Only block these AFTER pointing the check elsewhere, or Windows shows "No Internet" and
+# apps (Store, Xbox, Office) act offline. TelemetryGDIDBlocker.ps1 does both. By hand, set
+# these under HKLM\SYSTEM\CurrentControlSet\Services\NlaSvc\Parameters\Internet
+# (and the ...V6 twins):
+#   ActiveWebProbeHost=nmcheck.gnome.org  ActiveWebProbePath=check_network_status.txt
+#   ActiveWebProbeContent=NetworkManager is online
+#   ActiveDnsProbeHost=one.one.one.one  ActiveDnsProbeContent=1.1.1.1
+#   (V6: ActiveDnsProbeContent=2606:4700:4700::1111)
+0.0.0.0 www.msftconnecttest.com
+:: www.msftconnecttest.com
+0.0.0.0 ipv6.msftconnecttest.com
+:: ipv6.msftconnecttest.com
+0.0.0.0 www.msftncsi.com
+:: www.msftncsi.com
+0.0.0.0 dns.msftncsi.com
+:: dns.msftncsi.com
+
+# === [Opt-in, any tier] OPTIONAL: GPU vendor telemetry (NVIDIA) ===
+# Uncomment to block NVIDIA App / GeForce Experience / driver telemetry. Driver update,
+# sign-in and image hosts are deliberately not listed. TelemetryGDIDBlocker.ps1
+# -BlockGpuTelemetry also disables the NVIDIA telemetry service and AMD / Intel telemetry
+# programs.
+# 0.0.0.0 telemetry.nvidia.com
+# :: telemetry.nvidia.com
+# 0.0.0.0 telemetry.gfe.nvidia.com
+# :: telemetry.gfe.nvidia.com
+# 0.0.0.0 telemetry-dc1.gfe.nvidia.com
+# :: telemetry-dc1.gfe.nvidia.com
+# 0.0.0.0 telemetry-dce.gfe.nvidia.com
+# :: telemetry-dce.gfe.nvidia.com
+# 0.0.0.0 events.gfe.nvidia.com
+# :: events.gfe.nvidia.com
+# 0.0.0.0 events-dc1.gfe.nvidia.com
+# :: events-dc1.gfe.nvidia.com
+# 0.0.0.0 ls.dtrace.nvidia.com
+# :: ls.dtrace.nvidia.com
+# 0.0.0.0 nvidia.telemetry.internet.microsoft.com
+# :: nvidia.telemetry.internet.microsoft.com
+# 0.0.0.0 nvidia.tt.omtrdc.net
+# :: nvidia.tt.omtrdc.net
+# 0.0.0.0 api.commune.ly
+# :: api.commune.ly
+
+# === [Standard] Third-party trackers loaded by Widgets / Start / MSN content ===
+# Comscore and OneTrust calls seen on a fresh Windows 11 install (PC Security Channel, 2023).
+0.0.0.0 scorecardresearch.com
+:: scorecardresearch.com
+0.0.0.0 sb.scorecardresearch.com
+:: sb.scorecardresearch.com
+0.0.0.0 b.scorecardresearch.com
+:: b.scorecardresearch.com
+0.0.0.0 privacyportal.onetrust.com
+:: privacyportal.onetrust.com
+
+# === [Standard; not with -KeepOffice] Office, Teams, Skype (Aria / Nexus) ===
+# Office client telemetry and per-app Office web telemetry hosts.
+0.0.0.0 hubblecontent.osi.office.net
+:: hubblecontent.osi.office.net
+0.0.0.0 auc-visio-telemetry.officeapps.live.com
+:: auc-visio-telemetry.officeapps.live.com
+0.0.0.0 brc-visio-telemetry.officeapps.live.com
+:: brc-visio-telemetry.officeapps.live.com
+0.0.0.0 browser.pipe.aria.microsoft.com
+:: browser.pipe.aria.microsoft.com
+0.0.0.0 cac-visio-telemetry.officeapps.live.com
+:: cac-visio-telemetry.officeapps.live.com
+0.0.0.0 chc-visio-telemetry.officeapps.live.com
+:: chc-visio-telemetry.officeapps.live.com
+0.0.0.0 dec-visio-telemetry.officeapps.live.com
+:: dec-visio-telemetry.officeapps.live.com
+0.0.0.0 diagnostics.office.com
+:: diagnostics.office.com
+0.0.0.0 euc-excel-telemetry.officeapps.live.com
+:: euc-excel-telemetry.officeapps.live.com
+0.0.0.0 euc-onenote-telemetry.officeapps.live.com
+:: euc-onenote-telemetry.officeapps.live.com
+0.0.0.0 euc-powerpoint-telemetry.officeapps.live.com
+:: euc-powerpoint-telemetry.officeapps.live.com
+0.0.0.0 euc-visio-telemetry.officeapps.live.com
+:: euc-visio-telemetry.officeapps.live.com
+0.0.0.0 euc-word-telemetry.officeapps.live.com
+:: euc-word-telemetry.officeapps.live.com
+0.0.0.0 eurffc-word-telemetry.officeapps.live.com
+:: eurffc-word-telemetry.officeapps.live.com
+0.0.0.0 eurppc-excel-telemetry.officeapps.live.com
+:: eurppc-excel-telemetry.officeapps.live.com
+0.0.0.0 eurppc-powerpoint-telemetry.officeapps.live.com
+:: eurppc-powerpoint-telemetry.officeapps.live.com
+0.0.0.0 eurppc-word-telemetry.officeapps.live.com
+:: eurppc-word-telemetry.officeapps.live.com
+0.0.0.0 excel-telemetry.officeapps.live.com
+:: excel-telemetry.officeapps.live.com
+0.0.0.0 ffc-excel-telemetry.officeapps.live.com
+:: ffc-excel-telemetry.officeapps.live.com
+0.0.0.0 ffc-word-telemetry.officeapps.live.com
+:: ffc-word-telemetry.officeapps.live.com
+0.0.0.0 fgteu1-word-telemetry-vip.officeapps.live.com
+:: fgteu1-word-telemetry-vip.officeapps.live.com
+0.0.0.0 frc-visio-telemetry.officeapps.live.com
+:: frc-visio-telemetry.officeapps.live.com
+0.0.0.0 inc-visio-telemetry.officeapps.live.com
+:: inc-visio-telemetry.officeapps.live.com
+0.0.0.0 mobile.pipe.aria.microsoft.com
+:: mobile.pipe.aria.microsoft.com
+0.0.0.0 nexus.officeapps.live.com
+:: nexus.officeapps.live.com
+0.0.0.0 nexusrules.live.com
+:: nexusrules.live.com
+0.0.0.0 nexusrules.officeapps.live.com
+:: nexusrules.officeapps.live.com
+0.0.0.0 noc-visio-telemetry.officeapps.live.com
+:: noc-visio-telemetry.officeapps.live.com
+0.0.0.0 pgtbr1-excel-telemetry-vip.officeapps.live.com
+:: pgtbr1-excel-telemetry-vip.officeapps.live.com
+0.0.0.0 pgtbr1-powerpoint-telemetry-vip.officeapps.live.com
+:: pgtbr1-powerpoint-telemetry-vip.officeapps.live.com
+0.0.0.0 pgtbr1-word-telemetry-vip.officeapps.live.com
+:: pgtbr1-word-telemetry-vip.officeapps.live.com
+0.0.0.0 pgtbr2-excel-telemetry-vip.officeapps.live.com
+:: pgtbr2-excel-telemetry-vip.officeapps.live.com
+0.0.0.0 pgtbr2-powerpoint-telemetry-vip.officeapps.live.com
+:: pgtbr2-powerpoint-telemetry-vip.officeapps.live.com
+0.0.0.0 pgtbr2-word-telemetry-vip.officeapps.live.com
+:: pgtbr2-word-telemetry-vip.officeapps.live.com
+0.0.0.0 pgtca1-excel-telemetry-vip.officeapps.live.com
+:: pgtca1-excel-telemetry-vip.officeapps.live.com
+0.0.0.0 pgtca1-powerpoint-telemetry-vip.officeapps.live.com
+:: pgtca1-powerpoint-telemetry-vip.officeapps.live.com
+0.0.0.0 pgtca1-word-telemetry-vip.officeapps.live.com
+:: pgtca1-word-telemetry-vip.officeapps.live.com
+0.0.0.0 pgteu1-excel-telemetry-vip.officeapps.live.com
+:: pgteu1-excel-telemetry-vip.officeapps.live.com
+0.0.0.0 pgteu1-powerpoint-telemetry-vip.officeapps.live.com
+:: pgteu1-powerpoint-telemetry-vip.officeapps.live.com
+0.0.0.0 pgteu1-word-telemetry-vip.officeapps.live.com
+:: pgteu1-word-telemetry-vip.officeapps.live.com
+0.0.0.0 pgteu2-excel-telemetry-vip.officeapps.live.com
+:: pgteu2-excel-telemetry-vip.officeapps.live.com
+0.0.0.0 pgteu2-powerpoint-telemetry-vip.officeapps.live.com
+:: pgteu2-powerpoint-telemetry-vip.officeapps.live.com
+0.0.0.0 pgteu2-word-telemetry-vip.officeapps.live.com
+:: pgteu2-word-telemetry-vip.officeapps.live.com
+0.0.0.0 pgteu3-excel-telemetry-vip.officeapps.live.com
+:: pgteu3-excel-telemetry-vip.officeapps.live.com
+0.0.0.0 pgteu3-powerpoint-telemetry-vip.officeapps.live.com
+:: pgteu3-powerpoint-telemetry-vip.officeapps.live.com
+0.0.0.0 pgteu3-word-telemetry-vip.officeapps.live.com
+:: pgteu3-word-telemetry-vip.officeapps.live.com
+0.0.0.0 pgteu4-excel-telemetry-vip.officeapps.live.com
+:: pgteu4-excel-telemetry-vip.officeapps.live.com
+0.0.0.0 pgteu4-powerpoint-telemetry-vip.officeapps.live.com
+:: pgteu4-powerpoint-telemetry-vip.officeapps.live.com
+0.0.0.0 pgteu4-word-telemetry-vip.officeapps.live.com
+:: pgteu4-word-telemetry-vip.officeapps.live.com
+0.0.0.0 pgteu5-excel-telemetry-vip.officeapps.live.com
+:: pgteu5-excel-telemetry-vip.officeapps.live.com
+0.0.0.0 pgteu5-powerpoint-telemetry-vip.officeapps.live.com
+:: pgteu5-powerpoint-telemetry-vip.officeapps.live.com
+0.0.0.0 pgteu5-word-telemetry-vip.officeapps.live.com
+:: pgteu5-word-telemetry-vip.officeapps.live.com
+0.0.0.0 pgtmx1-powerpoint-telemetry-vip.officeapps.live.com
+:: pgtmx1-powerpoint-telemetry-vip.officeapps.live.com
+0.0.0.0 pgtmx1-word-telemetry-vip.officeapps.live.com
+:: pgtmx1-word-telemetry-vip.officeapps.live.com
+0.0.0.0 pgtus1-excel-telemetry-vip.officeapps.live.com
+:: pgtus1-excel-telemetry-vip.officeapps.live.com
+0.0.0.0 pgtus1-powerpoint-telemetry-vip.officeapps.live.com
+:: pgtus1-powerpoint-telemetry-vip.officeapps.live.com
+0.0.0.0 pgtus1-word-telemetry-vip.officeapps.live.com
+:: pgtus1-word-telemetry-vip.officeapps.live.com
+0.0.0.0 pgtus2-excel-telemetry-vip.officeapps.live.com
+:: pgtus2-excel-telemetry-vip.officeapps.live.com
+0.0.0.0 pgtus2-powerpoint-telemetry-vip.officeapps.live.com
+:: pgtus2-powerpoint-telemetry-vip.officeapps.live.com
+0.0.0.0 pgtus2-word-telemetry-vip.officeapps.live.com
+:: pgtus2-word-telemetry-vip.officeapps.live.com
+0.0.0.0 pgtus3-excel-telemetry-vip.officeapps.live.com
+:: pgtus3-excel-telemetry-vip.officeapps.live.com
+0.0.0.0 pgtus3-powerpoint-telemetry-vip.officeapps.live.com
+:: pgtus3-powerpoint-telemetry-vip.officeapps.live.com
+0.0.0.0 pgtus3-word-telemetry-vip.officeapps.live.com
+:: pgtus3-word-telemetry-vip.officeapps.live.com
+0.0.0.0 pgtus4-excel-telemetry-vip.officeapps.live.com
+:: pgtus4-excel-telemetry-vip.officeapps.live.com
+0.0.0.0 pgtus4-powerpoint-telemetry-vip.officeapps.live.com
+:: pgtus4-powerpoint-telemetry-vip.officeapps.live.com
+0.0.0.0 pgtus4-word-telemetry-vip.officeapps.live.com
+:: pgtus4-word-telemetry-vip.officeapps.live.com
+0.0.0.0 pgtus5-excel-telemetry-vip.officeapps.live.com
+:: pgtus5-excel-telemetry-vip.officeapps.live.com
+0.0.0.0 pgtus5-powerpoint-telemetry-vip.officeapps.live.com
+:: pgtus5-powerpoint-telemetry-vip.officeapps.live.com
+0.0.0.0 pgtus5-word-telemetry-vip.officeapps.live.com
+:: pgtus5-word-telemetry-vip.officeapps.live.com
+0.0.0.0 pgtus6-excel-telemetry-vip.officeapps.live.com
+:: pgtus6-excel-telemetry-vip.officeapps.live.com
+0.0.0.0 pgtus6-powerpoint-telemetry-vip.officeapps.live.com
+:: pgtus6-powerpoint-telemetry-vip.officeapps.live.com
+0.0.0.0 pgtus6-word-telemetry-vip.officeapps.live.com
+:: pgtus6-word-telemetry-vip.officeapps.live.com
+0.0.0.0 powerpoint-telemetry.officeapps.live.com
+:: powerpoint-telemetry.officeapps.live.com
+0.0.0.0 ppc-excel-telemetry.officeapps.live.com
+:: ppc-excel-telemetry.officeapps.live.com
+0.0.0.0 ppc-onenote-telemetry.officeapps.live.com
+:: ppc-onenote-telemetry.officeapps.live.com
+0.0.0.0 ppc-powerpoint-telemetry.officeapps.live.com
+:: ppc-powerpoint-telemetry.officeapps.live.com
+0.0.0.0 ppc-word-telemetry.officeapps.live.com
+:: ppc-word-telemetry.officeapps.live.com
+0.0.0.0 sgtus1-excel-telemetry-vip.officeapps.live.com
+:: sgtus1-excel-telemetry-vip.officeapps.live.com
+0.0.0.0 sgtus1-powerpoint-telemetry-vip.officeapps.live.com
+:: sgtus1-powerpoint-telemetry-vip.officeapps.live.com
+0.0.0.0 sgtus1-word-telemetry-vip.officeapps.live.com
+:: sgtus1-word-telemetry-vip.officeapps.live.com
+0.0.0.0 tgtus1-excel-telemetry-vip.officeapps.live.com
+:: tgtus1-excel-telemetry-vip.officeapps.live.com
+0.0.0.0 tgtus1-powerpoint-telemetry-vip.officeapps.live.com
+:: tgtus1-powerpoint-telemetry-vip.officeapps.live.com
+0.0.0.0 tgtus1-word-telemetry-vip.officeapps.live.com
+:: tgtus1-word-telemetry-vip.officeapps.live.com
+0.0.0.0 ukc-onenote-telemetry.officeapps.live.com
+:: ukc-onenote-telemetry.officeapps.live.com
+0.0.0.0 ukc-visio-telemetry.officeapps.live.com
+:: ukc-visio-telemetry.officeapps.live.com
+0.0.0.0 usc-onenote-telemetry.officeapps.live.com
+:: usc-onenote-telemetry.officeapps.live.com
+0.0.0.0 usc-visio-telemetry.officeapps.live.com
+:: usc-visio-telemetry.officeapps.live.com
+0.0.0.0 visio-telemetry.officeapps.live.com
+:: visio-telemetry.officeapps.live.com
+0.0.0.0 word-telemetry.officeapps.live.com
+:: word-telemetry.officeapps.live.com
+
+# === [Standard; not with -KeepDevTools] Developer / app telemetry ===
+# Application Insights, App Center, Visual Studio. Breaks Application Insights ingestion
+# for anyone developing against Azure Monitor from this network.
+0.0.0.0 dc.services.visualstudio.com
+:: dc.services.visualstudio.com
+0.0.0.0 in.appcenter.ms
+:: in.appcenter.ms
+0.0.0.0 ingest.appcenter.ms
+:: ingest.appcenter.ms
+0.0.0.0 js.monitor.azure.com
+:: js.monitor.azure.com
+0.0.0.0 telemetry.visualstudio.microsoft.com
+:: telemetry.visualstudio.microsoft.com
+
+# === [Standard] Ads, Spotlight, Iris, web tracking ===
+# Iris caches can embed the GDID. Clarity is Microsoft's session-replay tracker on
+# third-party sites. Breaks Spotlight lock-screen images, Start/Settings suggestions.
+0.0.0.0 ads.msn.com
+:: ads.msn.com
+0.0.0.0 adsdk.microsoft.com
+:: adsdk.microsoft.com
+0.0.0.0 analyticspixel.microsoft.com
+:: analyticspixel.microsoft.com
+0.0.0.0 arc.msn.com
+:: arc.msn.com
+0.0.0.0 bat.bing.com
+:: bat.bing.com
+0.0.0.0 c.bing.com
+:: c.bing.com
+0.0.0.0 c.msn.com
+:: c.msn.com
+0.0.0.0 clarity.microsoft.com
+:: clarity.microsoft.com
+0.0.0.0 fd.api.iris.microsoft.com
+:: fd.api.iris.microsoft.com
+0.0.0.0 ris.api.iris.microsoft.com
+:: ris.api.iris.microsoft.com
+0.0.0.0 srtb.msn.com
+:: srtb.msn.com
+
+# === [Maximum, Stripped; not with -KeepAccounts or -KeepDevTools] OPTIONAL: GDID creation ===
+# The only rules that stop a GDID from being created (DeviceAdd).
+# Windows creates the GDID via login.live.com/ppsecure/deviceaddcredential.srf. DNS cannot
+# block a single path, so the whole host must go. Left off because it breaks: Microsoft account
+# sign-in (existing Windows logons still work from cached credentials; new sign-ins,
+# password changes and adding an account do not), Microsoft Store
+# installs and updates, OneDrive, Microsoft 365 / Office activation and sign-in, Outlook.com,
+# Teams (personal), Xbox app and Game Pass, Phone Link, Family Safety, and settings sync.
+# Also removes nothing: a GDID the machine already has stays until its local state is wiped.
+# 0.0.0.0 login.live.com
+# :: login.live.com
+# 0.0.0.0 account.live.com
+# :: account.live.com
+
+# === [Standard; -KeepSmartScreen keeps it at Standard/Gaming] SmartScreen lookups ===
+# Sends visited URLs and downloaded-file hashes to Microsoft. Blocking removes SmartScreen's
+# download/URL reputation checks; Defender antivirus and its cloud protection are unaffected.
+0.0.0.0 checkappexec.microsoft.com
+:: checkappexec.microsoft.com
+0.0.0.0 data-edge.smartscreen.microsoft.com
+:: data-edge.smartscreen.microsoft.com
+0.0.0.0 nav-edge.smartscreen.microsoft.com
+:: nav-edge.smartscreen.microsoft.com
+0.0.0.0 ping-edge.smartscreen.microsoft.com
+:: ping-edge.smartscreen.microsoft.com
+0.0.0.0 smartscreen-prod.microsoft.com
+:: smartscreen-prod.microsoft.com
+0.0.0.0 smartscreen.microsoft.com
+:: smartscreen.microsoft.com
+0.0.0.0 unitedstates.smartscreen-prod.microsoft.com
+:: unitedstates.smartscreen-prod.microsoft.com
+0.0.0.0 urs.smartscreen.microsoft.com
+:: urs.smartscreen.microsoft.com
+
+# === [Gaming, Maximum, Stripped] Defender cloud protection (MAPS) ===
+# Sends file metadata and samples to Microsoft. Defender still scans locally and updates
+# definitions, but loses cloud lookups for brand-new malware. Comment out for Standard.
+0.0.0.0 spynet2.microsoft.com
+:: spynet2.microsoft.com
+0.0.0.0 spynetalt.microsoft.com
+:: spynetalt.microsoft.com
+0.0.0.0 wdcp.microsoft.com
+:: wdcp.microsoft.com
+
+# === [Maximum, Stripped; not Gaming] OPTIONAL: Remote configuration (OneSettings) ===
+# Leave commented if you play Xbox / Game Pass titles: some need OneSettings to start or sync
+# saves. Pushes telemetry and feature config. Blocking can break the Xbox app, Feedback Hub.
+# 0.0.0.0 settings-sandbox.data.microsoft.com
+# :: settings-sandbox.data.microsoft.com
+# 0.0.0.0 settings-win.data.microsoft.com
+# :: settings-win.data.microsoft.com
+# 0.0.0.0 settings.data.microsoft.com
+# :: settings.data.microsoft.com
+
+# === [Gaming, Maximum, Stripped; not with -KeepOffice] OPTIONAL: Feature config (ECS) ===
+# Pushes feature config to Teams, Edge and Office. Blocking can break Teams and Edge features.
+# 0.0.0.0 config.edge.skype.com
+# :: config.edge.skype.com
+
+# === [Maximum, Stripped; not Gaming] OPTIONAL: Delivery Optimization cloud services ===
+# Disables DO peering; updates download directly from the CDN. Not shown to carry the GDID.
+# 0.0.0.0 array401.prod.do.dsp.mp.microsoft.com
+# :: array401.prod.do.dsp.mp.microsoft.com
+# 0.0.0.0 array402.prod.do.dsp.mp.microsoft.com
+# :: array402.prod.do.dsp.mp.microsoft.com
+# 0.0.0.0 array403.prod.do.dsp.mp.microsoft.com
+# :: array403.prod.do.dsp.mp.microsoft.com
+# 0.0.0.0 array404.prod.do.dsp.mp.microsoft.com
+# :: array404.prod.do.dsp.mp.microsoft.com
+# 0.0.0.0 array405.prod.do.dsp.mp.microsoft.com
+# :: array405.prod.do.dsp.mp.microsoft.com
+# 0.0.0.0 array501.prod.do.dsp.mp.microsoft.com
+# :: array501.prod.do.dsp.mp.microsoft.com
+# 0.0.0.0 array502.prod.do.dsp.mp.microsoft.com
+# :: array502.prod.do.dsp.mp.microsoft.com
+# 0.0.0.0 array503.prod.do.dsp.mp.microsoft.com
+# :: array503.prod.do.dsp.mp.microsoft.com
+# 0.0.0.0 array504.prod.do.dsp.mp.microsoft.com
+# :: array504.prod.do.dsp.mp.microsoft.com
+# 0.0.0.0 array505.prod.do.dsp.mp.microsoft.com
+# :: array505.prod.do.dsp.mp.microsoft.com
+# 0.0.0.0 array506.prod.do.dsp.mp.microsoft.com
+# :: array506.prod.do.dsp.mp.microsoft.com
+# 0.0.0.0 array507.prod.do.dsp.mp.microsoft.com
+# :: array507.prod.do.dsp.mp.microsoft.com
+# 0.0.0.0 array508.prod.do.dsp.mp.microsoft.com
+# :: array508.prod.do.dsp.mp.microsoft.com
+# 0.0.0.0 array509.prod.do.dsp.mp.microsoft.com
+# :: array509.prod.do.dsp.mp.microsoft.com
+# 0.0.0.0 array510.prod.do.dsp.mp.microsoft.com
+# :: array510.prod.do.dsp.mp.microsoft.com
+# 0.0.0.0 array511.prod.do.dsp.mp.microsoft.com
+# :: array511.prod.do.dsp.mp.microsoft.com
+# 0.0.0.0 array512.prod.do.dsp.mp.microsoft.com
+# :: array512.prod.do.dsp.mp.microsoft.com
+# 0.0.0.0 array513.prod.do.dsp.mp.microsoft.com
+# :: array513.prod.do.dsp.mp.microsoft.com
+# 0.0.0.0 array514.prod.do.dsp.mp.microsoft.com
+# :: array514.prod.do.dsp.mp.microsoft.com
+# 0.0.0.0 array515.prod.do.dsp.mp.microsoft.com
+# :: array515.prod.do.dsp.mp.microsoft.com
+# 0.0.0.0 array516.prod.do.dsp.mp.microsoft.com
+# :: array516.prod.do.dsp.mp.microsoft.com
+# 0.0.0.0 array517.prod.do.dsp.mp.microsoft.com
+# :: array517.prod.do.dsp.mp.microsoft.com
+# 0.0.0.0 array518.prod.do.dsp.mp.microsoft.com
+# :: array518.prod.do.dsp.mp.microsoft.com
+# 0.0.0.0 array519.prod.do.dsp.mp.microsoft.com
+# :: array519.prod.do.dsp.mp.microsoft.com
+# 0.0.0.0 array520.prod.do.dsp.mp.microsoft.com
+# :: array520.prod.do.dsp.mp.microsoft.com
+# 0.0.0.0 array521.prod.do.dsp.mp.microsoft.com
+# :: array521.prod.do.dsp.mp.microsoft.com
+# 0.0.0.0 array522.prod.do.dsp.mp.microsoft.com
+# :: array522.prod.do.dsp.mp.microsoft.com
+# 0.0.0.0 array523.prod.do.dsp.mp.microsoft.com
+# :: array523.prod.do.dsp.mp.microsoft.com
+# 0.0.0.0 array524.prod.do.dsp.mp.microsoft.com
+# :: array524.prod.do.dsp.mp.microsoft.com
+# 0.0.0.0 array525.prod.do.dsp.mp.microsoft.com
+# :: array525.prod.do.dsp.mp.microsoft.com
+# 0.0.0.0 array601.prod.do.dsp.mp.microsoft.com
+# :: array601.prod.do.dsp.mp.microsoft.com
+# 0.0.0.0 array602.prod.do.dsp.mp.microsoft.com
+# :: array602.prod.do.dsp.mp.microsoft.com
+# 0.0.0.0 array603.prod.do.dsp.mp.microsoft.com
+# :: array603.prod.do.dsp.mp.microsoft.com
+# 0.0.0.0 array604.prod.do.dsp.mp.microsoft.com
+# :: array604.prod.do.dsp.mp.microsoft.com
+# 0.0.0.0 array605.prod.do.dsp.mp.microsoft.com
+# :: array605.prod.do.dsp.mp.microsoft.com
+# 0.0.0.0 array606.prod.do.dsp.mp.microsoft.com
+# :: array606.prod.do.dsp.mp.microsoft.com
+# 0.0.0.0 array607.prod.do.dsp.mp.microsoft.com
+# :: array607.prod.do.dsp.mp.microsoft.com
+# 0.0.0.0 array608.prod.do.dsp.mp.microsoft.com
+# :: array608.prod.do.dsp.mp.microsoft.com
+# 0.0.0.0 array609.prod.do.dsp.mp.microsoft.com
+# :: array609.prod.do.dsp.mp.microsoft.com
+# 0.0.0.0 array610.prod.do.dsp.mp.microsoft.com
+# :: array610.prod.do.dsp.mp.microsoft.com
+# 0.0.0.0 array611.prod.do.dsp.mp.microsoft.com
+# :: array611.prod.do.dsp.mp.microsoft.com
+# 0.0.0.0 array612.prod.do.dsp.mp.microsoft.com
+# :: array612.prod.do.dsp.mp.microsoft.com
+# 0.0.0.0 array613.prod.do.dsp.mp.microsoft.com
+# :: array613.prod.do.dsp.mp.microsoft.com
+# 0.0.0.0 array614.prod.do.dsp.mp.microsoft.com
+# :: array614.prod.do.dsp.mp.microsoft.com
+# 0.0.0.0 array615.prod.do.dsp.mp.microsoft.com
+# :: array615.prod.do.dsp.mp.microsoft.com
+# 0.0.0.0 array616.prod.do.dsp.mp.microsoft.com
+# :: array616.prod.do.dsp.mp.microsoft.com
+# 0.0.0.0 array617.prod.do.dsp.mp.microsoft.com
+# :: array617.prod.do.dsp.mp.microsoft.com
+# 0.0.0.0 array618.prod.do.dsp.mp.microsoft.com
+# :: array618.prod.do.dsp.mp.microsoft.com
+# 0.0.0.0 array619.prod.do.dsp.mp.microsoft.com
+# :: array619.prod.do.dsp.mp.microsoft.com
+# 0.0.0.0 array620.prod.do.dsp.mp.microsoft.com
+# :: array620.prod.do.dsp.mp.microsoft.com
+# 0.0.0.0 array621.prod.do.dsp.mp.microsoft.com
+# :: array621.prod.do.dsp.mp.microsoft.com
+# 0.0.0.0 array622.prod.do.dsp.mp.microsoft.com
+# :: array622.prod.do.dsp.mp.microsoft.com
+# 0.0.0.0 array801.prod.do.dsp.mp.microsoft.com
+# :: array801.prod.do.dsp.mp.microsoft.com
+# 0.0.0.0 array802.prod.do.dsp.mp.microsoft.com
+# :: array802.prod.do.dsp.mp.microsoft.com
+# 0.0.0.0 array803.prod.do.dsp.mp.microsoft.com
+# :: array803.prod.do.dsp.mp.microsoft.com
+# 0.0.0.0 array804.prod.do.dsp.mp.microsoft.com
+# :: array804.prod.do.dsp.mp.microsoft.com
+# 0.0.0.0 array805.prod.do.dsp.mp.microsoft.com
+# :: array805.prod.do.dsp.mp.microsoft.com
+# 0.0.0.0 array806.prod.do.dsp.mp.microsoft.com
+# :: array806.prod.do.dsp.mp.microsoft.com
+# 0.0.0.0 array807.prod.do.dsp.mp.microsoft.com
+# :: array807.prod.do.dsp.mp.microsoft.com
+# 0.0.0.0 array808.prod.do.dsp.mp.microsoft.com
+# :: array808.prod.do.dsp.mp.microsoft.com
+# 0.0.0.0 array809.prod.do.dsp.mp.microsoft.com
+# :: array809.prod.do.dsp.mp.microsoft.com
+# 0.0.0.0 array810.prod.do.dsp.mp.microsoft.com
+# :: array810.prod.do.dsp.mp.microsoft.com
+# 0.0.0.0 array811.prod.do.dsp.mp.microsoft.com
+# :: array811.prod.do.dsp.mp.microsoft.com
+# 0.0.0.0 array812.prod.do.dsp.mp.microsoft.com
+# :: array812.prod.do.dsp.mp.microsoft.com
+# 0.0.0.0 array813.prod.do.dsp.mp.microsoft.com
+# :: array813.prod.do.dsp.mp.microsoft.com
+# 0.0.0.0 array814.prod.do.dsp.mp.microsoft.com
+# :: array814.prod.do.dsp.mp.microsoft.com
+# 0.0.0.0 array815.prod.do.dsp.mp.microsoft.com
+# :: array815.prod.do.dsp.mp.microsoft.com
+# 0.0.0.0 array816.prod.do.dsp.mp.microsoft.com
+# :: array816.prod.do.dsp.mp.microsoft.com
+# 0.0.0.0 array817.prod.do.dsp.mp.microsoft.com
+# :: array817.prod.do.dsp.mp.microsoft.com
+# 0.0.0.0 array818.prod.do.dsp.mp.microsoft.com
+# :: array818.prod.do.dsp.mp.microsoft.com
+# 0.0.0.0 array819.prod.do.dsp.mp.microsoft.com
+# :: array819.prod.do.dsp.mp.microsoft.com
+# 0.0.0.0 array820.prod.do.dsp.mp.microsoft.com
+# :: array820.prod.do.dsp.mp.microsoft.com
+# 0.0.0.0 array821.prod.do.dsp.mp.microsoft.com
+# :: array821.prod.do.dsp.mp.microsoft.com
+# 0.0.0.0 array822.prod.do.dsp.mp.microsoft.com
+# :: array822.prod.do.dsp.mp.microsoft.com
+# 0.0.0.0 cp401.prod.do.dsp.mp.microsoft.com
+# :: cp401.prod.do.dsp.mp.microsoft.com
+# 0.0.0.0 cp501.prod.do.dsp.mp.microsoft.com
+# :: cp501.prod.do.dsp.mp.microsoft.com
+# 0.0.0.0 cp601.prod.do.dsp.mp.microsoft.com
+# :: cp601.prod.do.dsp.mp.microsoft.com
+# 0.0.0.0 cp801.prod.do.dsp.mp.microsoft.com
+# :: cp801.prod.do.dsp.mp.microsoft.com
+# 0.0.0.0 disc401.prod.do.dsp.mp.microsoft.com
+# :: disc401.prod.do.dsp.mp.microsoft.com
+# 0.0.0.0 disc501.prod.do.dsp.mp.microsoft.com
+# :: disc501.prod.do.dsp.mp.microsoft.com
+# 0.0.0.0 disc601.prod.do.dsp.mp.microsoft.com
+# :: disc601.prod.do.dsp.mp.microsoft.com
+# 0.0.0.0 disc801.prod.do.dsp.mp.microsoft.com
+# :: disc801.prod.do.dsp.mp.microsoft.com
+# 0.0.0.0 geo-prod.do.dsp.mp.microsoft.com
+# :: geo-prod.do.dsp.mp.microsoft.com
+# 0.0.0.0 geo.prod.do.dsp.mp.microsoft.com
+# :: geo.prod.do.dsp.mp.microsoft.com
+# 0.0.0.0 geover-prod.do.dsp.mp.microsoft.com
+# :: geover-prod.do.dsp.mp.microsoft.com
+# 0.0.0.0 geover.prod.do.dsp.mp.microsoft.com
+# :: geover.prod.do.dsp.mp.microsoft.com
+# 0.0.0.0 kv401.prod.do.dsp.mp.microsoft.com
+# :: kv401.prod.do.dsp.mp.microsoft.com
+# 0.0.0.0 kv501.prod.do.dsp.mp.microsoft.com
+# :: kv501.prod.do.dsp.mp.microsoft.com
+# 0.0.0.0 kv601.prod.do.dsp.mp.microsoft.com
+# :: kv601.prod.do.dsp.mp.microsoft.com
+# 0.0.0.0 kv801.prod.do.dsp.mp.microsoft.com
+# :: kv801.prod.do.dsp.mp.microsoft.com
+
+# === [Standard; not with -KeepLocation] Location service lookups ===
+# Wi-Fi-based location lookups. Breaks location for every app and automatic time zone.
+# Comment out if you keep location on (TelemetryGDIDBlocker.ps1 -KeepLocation).
+0.0.0.0 inference.location.live.net
+:: inference.location.live.net
+
+# === [Stripped; not with -KeepGaming] OPTIONAL: Windows Update and Defender definitions ===
+# Only for builds that already ship without Windows Update and Defender (e.g. GhostSpectre).
+# Breaks ALL Windows Update and definition updates. Deliberately NOT listed:
+# ctldl.windowsupdate.com (root-certificate updates; blocking it breaks TLS over time) and
+# *.delivery.mp.microsoft.com (Microsoft Store downloads).
+# 0.0.0.0 update.microsoft.com
+# :: update.microsoft.com
+# 0.0.0.0 windowsupdate.microsoft.com
+# :: windowsupdate.microsoft.com
+# 0.0.0.0 sls.update.microsoft.com
+# :: sls.update.microsoft.com
+# 0.0.0.0 slscr.update.microsoft.com
+# :: slscr.update.microsoft.com
+# 0.0.0.0 fe2.update.microsoft.com
+# :: fe2.update.microsoft.com
+# 0.0.0.0 fe2cr.update.microsoft.com
+# :: fe2cr.update.microsoft.com
+# 0.0.0.0 fe3.update.microsoft.com
+# :: fe3.update.microsoft.com
+# 0.0.0.0 download.windowsupdate.com
+# :: download.windowsupdate.com
+# 0.0.0.0 au.download.windowsupdate.com
+# :: au.download.windowsupdate.com
+# 0.0.0.0 ntservicepack.microsoft.com
+# :: ntservicepack.microsoft.com
+# 0.0.0.0 definitionupdates.microsoft.com
+# :: definitionupdates.microsoft.com
+# 0.0.0.0 tsfe.trafficshaping.dsp.mp.microsoft.com
+# :: tsfe.trafficshaping.dsp.mp.microsoft.com
+# 0.0.0.0 adl.windows.com
+# :: adl.windows.com
+
+# --- End ---
