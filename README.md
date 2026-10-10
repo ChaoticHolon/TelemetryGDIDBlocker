@@ -1,5 +1,8 @@
 # Telemetry & GDID Blocker v1.0
 
+<img width="906" height="894" alt="image" src="https://github.com/user-attachments/assets/5cffe697-2293-4bdc-a3ad-0a2ffd21e41b" />
+
+
 Blocks Windows' **Global Device ID (GDID)** and Microsoft telemetry, in four tiers. Changes are recorded and can be rolled back.
 
 The GDID is a server-assigned device ID. Windows gets it the first time a personal Microsoft account signs in on the PC. It is then attached to the PC's Microsoft account sign-ins and announced to Microsoft's device graph (Phone Link / Project Rome). The only way to stop one being created is to block personal Microsoft account sign-in, which the **Maximum** and **Stripped** tiers do.
